@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Undangan Pernikahan | Faiz & Siti</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #f7f3ef;
+      color: #333;
+      text-align: center;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+    .cover {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+      url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover;
+      color: white;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #c59d5f;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+    }
+    .box {
+      background: white;
+      margin: 15px auto;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 400px;
+      box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover" id="cover">
+  <h2>Undangan Pernikahan</h2>
+  <h1>Faiz & Siti</h1>
+  <p>11 Januari 2026</p>
+  <button class="btn" onclick="bukaUndangan()">Buka Undangan</button>
+</section>
+
+<!-- MUSIK -->
+<audio id="musik" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ISI -->
+<section id="isi" style="display:none;">
+  <h2>Assalamu’alaikum Wr. Wb.</h2>
+  <p>Dengan memohon rahmat Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam pernikahan kami:</p>
+
+  <div class="box">
+    <h3>Faiz Sabilil Haq</h3>
+    <p>&</p>
+    <h3>Siti Nurazizah</h3>
+  </div>
+
+  <div class="box">
+    <h3>Akad Nikah</h3>
+    <p>Minggu, 11 Januari 2026</p>
+    <p>08.00 WIB - Selesai</p>
+  </div>
+
+  <div class="box">
+    <h3>Resepsi</h3>
+    <p>Minggu, 11 Januari 2026</p>
+    <p>11.00 WIB - 16.30 WIB</p>
+  </div>
+
+  <div class="box">
+    <h3>Hitung Mundur</h3>
+    <p id="countdown"></p>
+  </div>
+
+  <div class="box">
+    <h3>Ucapan & Doa</h3>
+    <div class="commentbox"></div>
+  </div>
+
+  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami.</p>
+</section>
+
+<!-- SCRIPT -->
+<script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+<script>
+  function bukaUndangan() {
+    document.getElementById("cover").style.display = "none";
+    document.getElementById("isi").style.display = "block";
+    document.getElementById("musik").play();
+  }
+
+  // Countdown
+  var target = new Date("Jan 11, 2026 08:00:00").getTime();
+  setInterval(function() {
+    var now = new Date().getTime();
+    var jarak = target - now;
+    var hari = Math.floor(jarak / (1000 * 60 * 60 * 24));
+    document.getElementById("countdown").innerHTML = hari + " Hari Lagi";
+  }, 1000);
+
+  // Komentar
+  commentBox('5723456789012345');
+</script>
+
+</body>
+</html>
